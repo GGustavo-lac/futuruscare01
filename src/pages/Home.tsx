@@ -4,28 +4,35 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Users, Phone } from "lucide-react";
 import Layout from "@/components/Layout";
+import AnimatedPet3D from "@/components/3d/AnimatedPet3D";
+import FloatingCard3D from "@/components/3d/FloatingCard3D";
+import AnimatedStats3D from "@/components/3d/AnimatedStats3D";
 
 const Home = () => {
   const features = [
     {
       icon: "🏠",
       title: "Cuidado em Casa",
-      description: "Seu pet fica no conforto do lar enquanto você viaja"
+      description: "Seu pet fica no conforto do lar enquanto você viaja",
+      color: "#8A2BE2"
     },
     {
       icon: "⏰",
       title: "Disponível 24/7",
-      description: "Atendemos emergências a qualquer hora do dia"
+      description: "Atendemos emergências a qualquer hora do dia",
+      color: "#ADD8E6"
     },
     {
       icon: "❤️",
       title: "Amor Garantido",
-      description: "Tratamos seu pet como se fosse da nossa família"
+      description: "Tratamos seu pet como se fosse da nossa família",
+      color: "#8A2BE2"
     },
     {
       icon: "📱",
       title: "Updates Diários",
-      description: "Receba fotos e vídeos do seu pet todos os dias"
+      description: "Receba fotos e vídeos do seu pet todos os dias",
+      color: "#ADD8E6"
     }
   ];
 
@@ -38,50 +45,50 @@ const Home = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center hero-pattern">
+      {/* Hero Section with 3D Animation */}
+      <section className="relative min-h-screen flex items-center justify-center hero-pattern overflow-hidden">
         <div className="absolute inset-0 gradient-bg opacity-10"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="animate-fade-in">
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              Cuidamos do seu{" "}
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Pet
-              </span>{" "}
-              com Amor
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Serviços profissionais de pet sitting em São Paulo. 
-              Deixe seu companheiro em mãos seguras e carinhosas.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                asChild 
-                size="lg" 
-                className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-4"
-              >
-                <Link to="/contato">Agende Agora</Link>
-              </Button>
-              <Button 
-                asChild 
-                variant="outline" 
-                size="lg"
-                className="text-lg px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white"
-              >
-                <Link to="/servicos">Ver Serviços</Link>
-              </Button>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
+                Cuidamos do seu{" "}
+                <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                  Pet
+                </span>{" "}
+                com Amor
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl leading-relaxed">
+                Serviços profissionais de pet sitting em São Paulo. 
+                Deixe seu companheiro em mãos seguras e carinhosas.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button 
+                  asChild 
+                  size="lg" 
+                  className="gradient-bg text-white hover:opacity-90 text-lg px-8 py-4"
+                >
+                  <Link to="/contato">Agende Agora</Link>
+                </Button>
+                <Button 
+                  asChild 
+                  variant="outline" 
+                  size="lg"
+                  className="text-lg px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                >
+                  <Link to="/servicos">Ver Serviços</Link>
+                </Button>
+              </div>
             </div>
-          </div>
-          
-          <div className="mt-16 animate-float">
-            <div className="w-32 h-32 mx-auto gradient-bg rounded-full flex items-center justify-center text-6xl animate-pulse-gentle">
-              🐾
+            
+            <div className="animate-fade-in">
+              <AnimatedPet3D />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with 3D Cards */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -95,15 +102,19 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="card-hover border-0 shadow-lg">
-                <CardContent className="p-8 text-center">
-                  <div className="text-5xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
+              <Card key={index} className="card-hover border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="h-32">
+                    <FloatingCard3D icon={feature.icon} color={feature.color} />
+                  </div>
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -111,21 +122,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with 3D Animation */}
       <section className="py-20 gradient-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center text-white">
-                <div className="text-4xl md:text-5xl font-bold mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-lg opacity-90">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
+          <AnimatedStats3D stats={stats} />
         </div>
       </section>
 
