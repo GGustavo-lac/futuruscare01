@@ -1,7 +1,7 @@
 
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text3D, Center } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface FloatingCardProps {
@@ -30,29 +30,28 @@ const IconCard = ({ icon, color = "#8A2BE2" }: FloatingCardProps) => {
           emissiveIntensity={0.1}
         />
       </mesh>
-      <Center position={[0, 0, 0.1]}>
-        <Text3D
-          font="/fonts/helvetiker_regular.typeface.json"
-          size={0.5}
-          height={0.1}
-        >
-          {icon}
-          <meshStandardMaterial color="white" />
-        </Text3D>
-      </Center>
+      {/* Simple sphere to represent the icon instead of 3D text */}
+      <mesh position={[0, 0, 0.1]}>
+        <sphereGeometry args={[0.3, 16, 16]} />
+        <meshStandardMaterial color="white" />
+      </mesh>
     </Float>
   );
 };
 
 const FloatingCard3D = ({ icon, color }: FloatingCardProps) => {
   return (
-    <div className="w-full h-32">
+    <div className="w-full h-32 relative">
       <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         
         <IconCard icon={icon} color={color} />
       </Canvas>
+      {/* Display the emoji icon as HTML overlay */}
+      <div className="absolute inset-0 flex items-center justify-center text-4xl pointer-events-none">
+        {icon}
+      </div>
     </div>
   );
 };

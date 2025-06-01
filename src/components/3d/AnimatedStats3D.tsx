@@ -1,7 +1,7 @@
 
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Text } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface StatItemProps {
@@ -33,27 +33,16 @@ const StatItem = ({ number, label, position }: StatItemProps) => {
           />
         </mesh>
         
-        <Text
-          position={[0, 0.3, 0]}
-          fontSize={0.5}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-          font="/fonts/Inter-Bold.woff"
-        >
-          {number}
-        </Text>
+        {/* Simple geometric shapes instead of 3D text */}
+        <mesh position={[0, 0.3, 0]}>
+          <sphereGeometry args={[0.2, 16, 16]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
         
-        <Text
-          position={[0, -0.3, 0]}
-          fontSize={0.2}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-          font="/fonts/Inter-Regular.woff"
-        >
-          {label}
-        </Text>
+        <mesh position={[0, -0.3, 0]}>
+          <boxGeometry args={[0.3, 0.1, 0.1]} />
+          <meshStandardMaterial color="white" />
+        </mesh>
       </group>
     </Float>
   );
@@ -65,7 +54,7 @@ interface AnimatedStats3DProps {
 
 const AnimatedStats3D = ({ stats }: AnimatedStats3DProps) => {
   return (
-    <div className="w-full h-64">
+    <div className="w-full h-64 relative">
       <Canvas camera={{ position: [0, 0, 8], fov: 60 }}>
         <ambientLight intensity={0.4} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -84,6 +73,18 @@ const AnimatedStats3D = ({ stats }: AnimatedStats3DProps) => {
           />
         ))}
       </Canvas>
+      
+      {/* HTML overlay for the actual text */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="flex gap-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center text-white">
+              <div className="text-2xl font-bold mb-1">{stat.number}</div>
+              <div className="text-sm opacity-80">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
