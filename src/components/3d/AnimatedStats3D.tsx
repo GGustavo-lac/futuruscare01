@@ -5,12 +5,10 @@ import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 
 interface StatItemProps {
-  number: string;
-  label: string;
   position: [number, number, number];
 }
 
-const StatItem = ({ number, label, position }: StatItemProps) => {
+const StatItem = ({ position }: StatItemProps) => {
   const groupRef = useRef<THREE.Group>(null!);
   
   useFrame((state) => {
@@ -33,7 +31,6 @@ const StatItem = ({ number, label, position }: StatItemProps) => {
           />
         </mesh>
         
-        {/* Simple geometric shapes instead of 3D text */}
         <mesh position={[0, 0.3, 0]}>
           <sphereGeometry args={[0.2, 16, 16]} />
           <meshStandardMaterial color="white" />
@@ -60,11 +57,9 @@ const AnimatedStats3D = ({ stats }: AnimatedStats3DProps) => {
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[-5, 5, 5]} intensity={0.5} color="#ADD8E6" />
         
-        {stats.map((stat, index) => (
+        {stats.map((_, index) => (
           <StatItem
             key={index}
-            number={stat.number}
-            label={stat.label}
             position={[
               (index - stats.length / 2 + 0.5) * 3,
               0,
@@ -74,7 +69,6 @@ const AnimatedStats3D = ({ stats }: AnimatedStats3DProps) => {
         ))}
       </Canvas>
       
-      {/* HTML overlay for the actual text */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="flex gap-8">
           {stats.map((stat, index) => (
