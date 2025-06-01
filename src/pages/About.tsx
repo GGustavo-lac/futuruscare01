@@ -8,22 +8,34 @@ import Layout from "@/components/Layout";
 const About = () => {
   const team = [
     {
-      name: "Ana Clara Santos",
-      role: "Fundadora & Veterinária",
-      description: "Formada em Medicina Veterinária com 8 anos de experiência em cuidados especializados.",
-      image: "👩‍⚕️"
+      name: "Derik Batinga",
+      role: "Fundador & CEO",
+      description: "Especialista em gestão de serviços para pets com visão inovadora para o futuro do cuidado animal.",
+      image: "👨‍💼"
     },
     {
-      name: "Pedro Oliveira",
-      role: "Pet Sitter Senior",
-      description: "Especialista em comportamento animal e primeiros socorros para pets.",
+      name: "David Pedreira",
+      role: "Veterinário Chefe",
+      description: "Formado em Medicina Veterinária com expertise em cuidados especializados e emergências.",
+      image: "👨‍⚕️"
+    },
+    {
+      name: "Isaac Dantas",
+      role: "Coordenador de Operações",
+      description: "Responsável pela coordenação e qualidade de todos os serviços da Futurus Care.",
       image: "👨‍🎓"
     },
     {
-      name: "Carla Mendes",
-      role: "Coordenadora de Serviços",
-      description: "Responsável pelo atendimento e coordenação de todos os serviços da PetCare+.",
-      image: "👩‍💼"
+      name: "Enzo Caldeira",
+      role: "Especialista em Comportamento Animal",
+      description: "Expert em comportamento animal e técnicas de socialização para pets.",
+      image: "👨‍🔬"
+    },
+    {
+      name: "Gustavo Lacerda",
+      role: "Gerente de Atendimento",
+      description: "Garante a excelência no atendimento e satisfação de todos os nossos clientes.",
+      image: "👨‍💻"
     }
   ];
 
@@ -80,12 +92,12 @@ const About = () => {
               </h2>
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
-                  A PetCare+ nasceu em 2019, quando nossa fundadora Ana Clara percebeu 
+                  A Futurus Care nasceu em 2019, quando nossa equipe percebeu 
                   que muitos tutores enfrentavam dificuldades para encontrar cuidadores 
                   confiáveis para seus pets durante viagens ou períodos de ausência.
                 </p>
                 <p>
-                  Como veterinária e apaixonada por animais, Ana decidiu criar um serviço 
+                  Como profissionais apaixonados por animais, decidimos criar um serviço 
                   que combinasse expertise profissional com o carinho de uma família. 
                   Hoje, já cuidamos de mais de 500 pets em São Paulo e região.
                 </p>
@@ -150,7 +162,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="card-hover border-0 shadow-lg">
                 <CardContent className="p-8 text-center">

@@ -86,7 +86,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Por que escolher a PetCare+?
+              Por que escolher a Futurus Care?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Oferecemos o melhor cuidado para seu pet com profissionalismo e muito carinho
@@ -144,7 +144,7 @@ const Home = () => {
                 ))}
               </div>
               <blockquote className="text-xl text-gray-700 mb-6 italic">
-                "A PetCare+ salvou minha viagem! Minha Luna ficou super bem cuidada 
+                "A Futurus Care salvou minha viagem! Minha Luna ficou super bem cuidada 
                 e eu recebi fotos dela todos os dias. Recomendo de olhos fechados!"
               </blockquote>
               <div className="text-primary font-semibold">— Maria Silva</div>
