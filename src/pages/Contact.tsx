@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -71,7 +70,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "E-mail",
-      content: "contato@petcareplus.com.br",
+      content: "contato@futuruscare.com.br",
       description: "Resposta em até 2 horas"
     },
     {
@@ -366,7 +365,7 @@ const Contact = () => {
             ))}
           </div>
           <p className="text-xl text-gray-300 mb-8">
-            Junte-se às famílias que escolheram a PetCare+ para cuidar de seus companheiros
+            Junte-se às famílias que escolheram a Futurus Care para cuidar de seus companheiros
           </p>
           <Button 
             asChild 
