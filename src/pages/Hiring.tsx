@@ -1,4 +1,3 @@
-
 import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,73 +26,181 @@ const people: Person[] = [
     id: 1,
     name: "Ana Silva",
     location: "São Paulo, SP",
-    avatar: "👩‍💻",
-    skills: ["React", "TypeScript", "Node.js", "Design UI/UX"],
-    hourlyRate: 120,
+    avatar: "👩‍⚕️",
+    skills: ["Cuidados Médicos", "Administração de Medicamentos", "Pets Idosos", "Emergências"],
+    hourlyRate: 85,
     rating: 4.9,
     availability: "disponivel",
-    experience: "5 anos",
-    description: "Desenvolvedora full-stack especializada em React e Node.js com foco em experiência do usuário."
+    experience: "8 anos",
+    description: "Veterinária especializada em cuidados domiciliares para pets com necessidades especiais e idosos."
   },
   {
     id: 2,
     name: "Carlos Santos",
     location: "Rio de Janeiro, RJ",
-    avatar: "👨‍💼",
-    skills: ["Marketing Digital", "SEO", "Google Ads", "Analytics"],
-    hourlyRate: 80,
+    avatar: "👨‍🦲",
+    skills: ["Passeios", "Exercícios", "Cães Grandes", "Treinamento Básico"],
+    hourlyRate: 35,
     rating: 4.7,
     availability: "parcial",
     experience: "3 anos",
-    description: "Especialista em marketing digital com experiência em campanhas para pet shops e clínicas veterinárias."
+    description: "Especialista em exercícios e passeios para cães de grande porte. Adora atividades ao ar livre."
   },
   {
     id: 3,
     name: "Maria Oliveira",
     location: "Belo Horizonte, MG",
-    avatar: "👩‍🎨",
-    skills: ["Design Gráfico", "Photoshop", "Illustrator", "Branding"],
-    hourlyRate: 90,
+    avatar: "👩‍🦰",
+    skills: ["Gatos", "Felinos Especiais", "Comportamento Felino", "Cuidados Noturnos"],
+    hourlyRate: 50,
     rating: 4.8,
     availability: "disponivel",
-    experience: "4 anos",
-    description: "Designer gráfica especializada em identidade visual para negócios do setor pet."
+    experience: "6 anos",
+    description: "Apaixonada por felinos, especializada no cuidado de gatos com comportamentos específicos e raças exóticas."
   },
   {
     id: 4,
     name: "João Costa",
     location: "Porto Alegre, RS",
-    avatar: "👨‍💻",
-    skills: ["Python", "Data Science", "Machine Learning", "BI"],
-    hourlyRate: 150,
+    avatar: "👨‍🦱",
+    skills: ["Pets Pequenos", "Aves", "Roedores", "Cuidados Delicados"],
+    hourlyRate: 40,
     rating: 4.9,
-    availability: "ocupado",
-    experience: "7 anos",
-    description: "Cientista de dados com expertise em análise de comportamento animal e otimização de negócios pet."
+    availability: "disponivel",
+    experience: "4 anos",
+    description: "Especialista em pets de pequeno porte, aves e roedores. Muito cuidadoso e atencioso com animais delicados."
   },
   {
     id: 5,
     name: "Fernanda Lima",
     location: "Curitiba, PR",
-    avatar: "👩‍📱",
-    skills: ["Social Media", "Content Creation", "Instagram", "TikTok"],
-    hourlyRate: 60,
+    avatar: "👩‍🦳",
+    skills: ["Hospedagem", "Cuidados 24h", "Multiple Pets", "Casa Ampla"],
+    hourlyRate: 25,
     rating: 4.6,
     availability: "disponivel",
-    experience: "2 anos",
-    description: "Especialista em redes sociais para o mercado pet, criando conteúdo viral e engajamento."
+    experience: "5 anos",
+    description: "Oferece hospedagem em casa com quintal amplo. Especialista em cuidar de múltiplos pets simultaneamente."
   },
   {
     id: 6,
     name: "Pedro Alves",
     location: "Salvador, BA",
-    avatar: "👨‍🔧",
-    skills: ["Desenvolvimento Mobile", "Flutter", "React Native", "Firebase"],
-    hourlyRate: 110,
+    avatar: "👨‍🦰",
+    skills: ["Grooming", "Banho e Tosa", "Cuidados Estéticos", "Unhas"],
+    hourlyRate: 60,
     rating: 4.8,
     availability: "parcial",
+    experience: "7 anos",
+    description: "Pet groomer profissional que oferece serviços de beleza e higiene para pets em domicílio."
+  },
+  {
+    id: 7,
+    name: "Juliana Ferreira",
+    location: "Fortaleza, CE",
+    avatar: "👩‍🦱",
+    skills: ["Filhotes", "Socialização", "Primeiros Cuidados", "Vacinas"],
+    hourlyRate: 45,
+    rating: 4.7,
+    availability: "disponivel",
     experience: "4 anos",
-    description: "Desenvolvedor mobile especializado em apps para pet shops e serviços veterinários."
+    description: "Especializada no cuidado de filhotes e socialização. Ajuda na adaptação de pets recém-adotados."
+  },
+  {
+    id: 8,
+    name: "Roberto Dias",
+    location: "Brasília, DF",
+    avatar: "👨‍🦲",
+    skills: ["Transporte Pet", "Viagens", "Aeroporto", "Mudanças"],
+    hourlyRate: 55,
+    rating: 4.5,
+    availability: "disponivel",
+    experience: "6 anos",
+    description: "Especialista em transporte seguro de pets. Oferece serviços para viagens, mudanças e ida ao veterinário."
+  },
+  {
+    id: 9,
+    name: "Camila Torres",
+    location: "Recife, PE",
+    avatar: "👩‍🦰",
+    skills: ["Pet Therapy", "Pets Ansiosos", "Comportamento", "Relaxamento"],
+    hourlyRate: 70,
+    rating: 4.9,
+    availability: "parcial",
+    experience: "5 anos",
+    description: "Terapeuta comportamental para pets. Especializada em tratar ansiedade e problemas comportamentais."
+  },
+  {
+    id: 10,
+    name: "Lucas Mendes",
+    location: "Goiânia, GO",
+    avatar: "👨‍🦱",
+    skills: ["Pets Exóticos", "Répteis", "Anfíbios", "Cuidados Especiais"],
+    hourlyRate: 90,
+    rating: 4.8,
+    availability: "disponivel",
+    experience: "9 anos",
+    description: "Biólogo especializado em pets exóticos como répteis, anfíbios e outros animais não convencionais."
+  },
+  {
+    id: 11,
+    name: "Amanda Costa",
+    location: "Florianópolis, SC",
+    avatar: "👩‍💼",
+    skills: ["Emergências", "Primeiros Socorros", "Plantão", "Cuidados Intensivos"],
+    hourlyRate: 95,
+    rating: 5.0,
+    availability: "ocupado",
+    experience: "10 anos",
+    description: "Enfermeira veterinária com especialização em emergências. Disponível para plantões e cuidados intensivos."
+  },
+  {
+    id: 12,
+    name: "Diego Silva",
+    location: "Campinas, SP",
+    avatar: "👨‍🔧",
+    skills: ["Pets Grandes", "Cães de Guarda", "Exercícios Intensos", "Adestramento"],
+    hourlyRate: 65,
+    rating: 4.6,
+    availability: "disponivel",
+    experience: "8 anos",
+    description: "Ex-adestrador profissional especializado em cães grandes e de guarda. Oferece exercícios e cuidados específicos."
+  },
+  {
+    id: 13,
+    name: "Isabela Rocha",
+    location: "Vitória, ES",
+    avatar: "👩‍🎓",
+    skills: ["Pets Idosos", "Fisioterapia", "Mobilidade", "Cuidados Geriátricos"],
+    hourlyRate: 75,
+    rating: 4.9,
+    availability: "disponivel",
+    experience: "6 years",
+    description: "Fisioterapeuta animal especializada em pets idosos. Oferece exercícios de mobilidade e cuidados geriátricos."
+  },
+  {
+    id: 14,
+    name: "Rafael Lima",
+    location: "João Pessoa, PB",
+    avatar: "👨‍🎨",
+    skills: ["Brincadeiras", "Entretenimento", "Atividades Lúdicas", "Pets Jovens"],
+    hourlyRate: 30,
+    rating: 4.4,
+    availability: "disponivel",
+    experience: "2 anos",
+    description: "Recreador especializado em manter pets jovens entretidos com brincadeiras e atividades educativas."
+  },
+  {
+    id: 15,
+    name: "Patrícia Almeida",
+    location: "Maceió, AL",
+    avatar: "👩‍⚕️",
+    skills: ["Nutrição Pet", "Dietas Especiais", "Alimentação", "Suplementação"],
+    hourlyRate: 80,
+    rating: 4.7,
+    availability: "parcial",
+    experience: "7 anos",
+    description: "Nutricionista animal que oferece consultoria e cuidados relacionados à alimentação e dietas especiais."
   }
 ];
 
@@ -142,10 +249,10 @@ const Hiring = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Contrate Profissionais Especializados
+              Contrate Cuidadores Pet Especializados
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Encontre os melhores talentos para impulsionar seu negócio pet
+              Encontre os melhores cuidadores para seu pet com diferentes especialidades e preços
             </p>
           </div>
 
@@ -163,20 +270,20 @@ const Hiring = () => {
                   <Label htmlFor="search">Buscar</Label>
                   <Input
                     id="search"
-                    placeholder="Nome ou habilidade..."
+                    placeholder="Nome ou especialidade..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
                 
                 <div>
-                  <Label htmlFor="skill">Habilidade</Label>
+                  <Label htmlFor="skill">Especialidade</Label>
                   <Select value={skillFilter} onValueChange={setSkillFilter}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Todas as habilidades" />
+                      <SelectValue placeholder="Todas as especialidades" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Todas as habilidades</SelectItem>
+                      <SelectItem value="all">Todas as especialidades</SelectItem>
                       {allSkills.map(skill => (
                         <SelectItem key={skill} value={skill}>{skill}</SelectItem>
                       ))}
@@ -189,7 +296,7 @@ const Hiring = () => {
                   <Input
                     id="price"
                     type="number"
-                    placeholder="R$ 200"
+                    placeholder="R$ 100"
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(e.target.value)}
                   />
@@ -231,11 +338,11 @@ const Hiring = () => {
           {/* Resultados */}
           <div className="mb-6">
             <p className="text-gray-600">
-              {filteredPeople.length} profissionais encontrados
+              {filteredPeople.length} cuidadores encontrados
             </p>
           </div>
 
-          {/* Lista de Profissionais */}
+          {/* Lista de Cuidadores */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredPeople.map((person) => (
               <Card key={person.id} className="card-hover">
@@ -273,7 +380,7 @@ const Hiring = () => {
                     </div>
 
                     <div>
-                      <h4 className="font-medium text-sm mb-2">Habilidades:</h4>
+                      <h4 className="font-medium text-sm mb-2">Especialidades:</h4>
                       <div className="flex flex-wrap gap-1">
                         {person.skills.map((skill) => (
                           <Badge key={skill} variant="secondary" className="text-xs">
@@ -306,7 +413,7 @@ const Hiring = () => {
           {filteredPeople.length === 0 && (
             <div className="text-center py-12">
               <p className="text-gray-500 text-lg">
-                Nenhum profissional encontrado com os filtros selecionados.
+                Nenhum cuidador encontrado com os filtros selecionados.
               </p>
               <Button 
                 variant="outline" 
