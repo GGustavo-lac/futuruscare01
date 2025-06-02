@@ -107,9 +107,9 @@ const Hiring = () => {
 
   const filteredPeople = useMemo(() => {
     return people.filter(person => {
-      const matchesSkill = !skillFilter || person.skills.includes(skillFilter);
+      const matchesSkill = !skillFilter || skillFilter === "all" || person.skills.includes(skillFilter);
       const matchesPrice = !maxPrice || person.hourlyRate <= parseInt(maxPrice);
-      const matchesAvailability = !availabilityFilter || person.availability === availabilityFilter;
+      const matchesAvailability = !availabilityFilter || availabilityFilter === "all" || person.availability === availabilityFilter;
       const matchesSearch = !searchTerm || 
         person.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         person.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -176,7 +176,7 @@ const Hiring = () => {
                       <SelectValue placeholder="Todas as habilidades" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Todas as habilidades</SelectItem>
+                      <SelectItem value="all">Todas as habilidades</SelectItem>
                       {allSkills.map(skill => (
                         <SelectItem key={skill} value={skill}>{skill}</SelectItem>
                       ))}
@@ -202,7 +202,7 @@ const Hiring = () => {
                       <SelectValue placeholder="Todas" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Todas</SelectItem>
+                      <SelectItem value="all">Todas</SelectItem>
                       <SelectItem value="disponivel">Disponível</SelectItem>
                       <SelectItem value="parcial">Parcialmente disponível</SelectItem>
                       <SelectItem value="ocupado">Ocupado</SelectItem>
