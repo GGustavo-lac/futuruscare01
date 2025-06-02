@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -207,6 +208,7 @@ const people: Person[] = [
 const allSkills = [...new Set(people.flatMap(person => person.skills))].sort();
 
 const Hiring = () => {
+  const navigate = useNavigate();
   const [skillFilter, setSkillFilter] = useState<string>("");
   const [maxPrice, setMaxPrice] = useState<string>("");
   const [availabilityFilter, setAvailabilityFilter] = useState<string>("");
@@ -400,6 +402,7 @@ const Hiring = () => {
                       <Button 
                         className="gradient-bg text-white hover:opacity-90"
                         disabled={person.availability === "ocupado"}
+                        onClick={() => navigate(`/contratar/${person.id}`)}
                       >
                         {person.availability === "ocupado" ? "Indisponível" : "Contratar"}
                       </Button>
