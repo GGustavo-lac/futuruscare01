@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -14,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import Layout from "@/components/Layout";
+import PaymentModal from "@/components/PaymentModal";
 
 // Mock data - todos os cuidadores com informações de contato
 const people = [
@@ -269,6 +269,7 @@ const PetSitterContact = () => {
     time: "",
     petDetails: ""
   });
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const petSitter = people.find(p => p.id === parseInt(id || "0"));
 
@@ -302,6 +303,12 @@ const PetSitterContact = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     return date < today || isDateBusy(date);
+  };
+
+  const handlePayment = () => {
+    if (paymentMethod) {
+      setShowPaymentModal(true);
+    }
   };
 
   return (
@@ -517,6 +524,7 @@ const PetSitterContact = () => {
                   className="w-full gradient-bg text-white hover:opacity-90"
                   disabled={!paymentMethod || !selectedDate || !serviceDetails.time}
                   size="lg"
+                  onClick={handlePayment}
                 >
                   Pagar R$ {totalAmount} via {paymentMethod === "pix" ? "PIX" : "Cartão"}
                 </Button>
@@ -525,6 +533,13 @@ const PetSitterContact = () => {
           </div>
         </div>
       </div>
+
+      <PaymentModal
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        paymentMethod={paymentMethod!}
+        amount={totalAmount}
+      />
     </Layout>
   );
 };
